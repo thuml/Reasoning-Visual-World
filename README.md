@@ -27,8 +27,6 @@ For more details, check our [project page](https://thuml.github.io/Reasoning-Vis
 
 ## 🏆 VisWorld-Eval: Task Suite for Reasoning with Visual World Modeling
 
-### Data
-
 The VisWorld-Eval suite is for assessing multimodal reasoning with visual world modeling. It comprises seven tasks spanning both synthetic and real-world domains, each designed to isolate and demand specific atomic world-model capabilities.
 
 | Task                         | Capability      | Domain      | Test Samples | Source / Reference              |
@@ -41,12 +39,18 @@ The VisWorld-Eval suite is for assessing multimodal reasoning with visual world 
 | Cube 3-view projection        | Reconstruction  | Synthetic   | 480          | [SpatialViz](https://github.com/wangst0181/Spatial-Visualization-Benchmark)              |
 | Real-world spatial reasoning | Reconstruction  | Real-world  | 522          | [MMSI-Bench](https://github.com/InternRobotics/MMSI-Bench)             |
 
-Load VisWorld-Eval from HuggingFace:
+### Load Data
+
+Load from 🤗 HuggingFace:
 
 ```python
 from datasets import load_dataset
 ds = load_dataset("thuml/VisWorld-Eval")
 ```
+
+<!-- ### Evaluation
+
+TODO -->
 
 ### Leaderboard
 
@@ -61,10 +65,6 @@ Zero-shot evaluation of advanced VLMs on VisWorld-Eval: We report the average ac
 | o3                     | 13.5          | 68.1             | 24.7          | 37.7       | 44.4             | 0.0  | 36.0    | 37.6              | 32.0              |
 | Qwen3-VL-8B-Thinking    | 11.0          | 49.3             | 17.8          | 21.2       | 27.7             | 0.0  | 5.8     | 25.4              | 18.9              |
 | BAGEL-7B-MoT           | 11.2          | 31.6             | 19.4          | 26.8       | 27.2             | 0.0  | 0.2     | 23.2              | 16.6              |
-
-<!-- ### Evaluation
-
-TODO -->
 
 ## 🚀 Release Progress
 
