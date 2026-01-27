@@ -25,7 +25,7 @@ In this work:
 
 For more details, check our [project page](https://thuml.github.io/Reasoning-Visual-World/) or [paper](https://arxiv.org/abs/2601.xxxxx).
 
-## 🏆 VisWorld-Eval
+## 🏆 VisWorld-Eval: Task Suite for Reasoning with Visual World Modeling
 
 ### Data
 
@@ -34,7 +34,7 @@ The VisWorld-Eval suite is for assessing multimodal reasoning with visual world 
 | Task                         | Capability      | Domain      | Test Samples | Source / Reference              |
 |------------------------------|-----------------|-------------|--------------|--------------------------------|
 | Paper folding                | Simulation      | Synthetic   | 480          | [SpatialViz](https://github.com/wangst0181/Spatial-Visualization-Benchmark)              |
-| Multi-hop manipulation       | Simulation      | Synthetic   | 480          | [ZebraCoT](https://arxiv.org/abs/2507.16746), [CLEVR]((https://github.com/facebookresearch/clevr-dataset-gen))    |
+| Multi-hop manipulation       | Simulation      | Synthetic   | 480          | [ZebraCoT](https://arxiv.org/abs/2507.16746), [CLEVR](https://github.com/facebookresearch/clevr-dataset-gen)    |
 | Ball tracking                | Simulation      | Synthetic   | 1,024        | [RBench-V](https://github.com/CHEN-Xinsheng/VLMEvalKit_RBench-V)          |
 | Maze                          | Simulation      | Synthetic   | 480          | [maze-dataset](https://github.com/understanding-search/maze-dataset)          |
 | Sokoban                       | Simulation      | Synthetic   | 480          | [Game-RL](https://github.com/tongjingqi/Game-RL)                 |
@@ -44,7 +44,8 @@ The VisWorld-Eval suite is for assessing multimodal reasoning with visual world 
 Load VisWorld-Eval from HuggingFace:
 
 ```python
-TODO
+from datasets import load_dataset
+ds = load_dataset("thuml/VisWorld-Eval")
 ```
 
 ### Leaderboard
@@ -53,14 +54,11 @@ Zero-shot evaluation of advanced VLMs on VisWorld-Eval: We report the average ac
 
 | Models                 | Paper Folding | Multi-Hop Manip. | Ball Tracking | Cube 3-View | MMSI (Pos. Rel.) | Maze | Sokoban | Overall (5 tasks) | Overall (7 tasks) |
 |------------------------|---------------|------------------|---------------|------------|------------------|------|---------|-------------------|-------------------|
-| **Proprietary Models** |               |                  |               |            |                  |      |         |                   |                   |
 | Gemini 3 Flash         | 25.6          | **75.4**             | **55.3**          | 52.7       | 41.3             | 73.9 | **99.3**    | **50.0**              | **60.5**              |
 | Gemini 3 Pro           | **27.0**          | 74.5             | 44.7          | **53.3**       | **49.6**             | 33.5 | 90.2    | 49.8              | 53.2              |
 | Seed 1.8               | 10.6          | 75.2             | 24.4          | 42.5       | 38.8             | **83.9** | 68.3    | 38.3              | 49.1              |
 | GPT 5.1                | 6.4           | 73.9             | 34.8          | 44.5       | 44.8             | 0.6  | 62.8    | 40.8              | 38.2              |
 | o3                     | 13.5          | 68.1             | 24.7          | 37.7       | 44.4             | 0.0  | 36.0    | 37.6              | 32.0              |
-|                        |               |                  |               |            |                  |      |         |                   |                   |
-| **Open-Source Models** |               |                  |               |            |                  |      |         |                   |                   |
 | Qwen3-VL-8B-Thinking    | 11.0          | 49.3             | 17.8          | 21.2       | 27.7             | 0.0  | 5.8     | 25.4              | 18.9              |
 | BAGEL-7B-MoT           | 11.2          | 31.6             | 19.4          | 26.8       | 27.2             | 0.0  | 0.2     | 23.2              | 16.6              |
 
