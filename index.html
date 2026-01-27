@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Visual Generation Unlocks Human-Like Reasoning through Multimodal World Models">
+  <meta name="keywords" content="World Model, Reinforcement Learning with Verifiable Rewards, RLVR, ">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Visual Generation Unlocks Human-Like Reasoning through Multimodal World Models</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" target="_blank" href="https://manchery.github.io/">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" target="_blank" href="https://thuml.github.io/RLVR-World/">
+            RLVR-World
+          </a>
+          <a class="navbar-item" target="_blank" href="https://thuml.github.io/iVideoGPT/">
+            iVideoGPT
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title">Visual Generation Unlocks Human-Like Reasoning<br/>through Multimodal World Models 🌏</h1>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://manchery.github.io/">Jialong Wu</a><sup>1,2</sup>,</span>
+            <span class="author-block">
+              Xiaoying Zhang#<sup>2</sup>,</span>
+            <span class="author-block">
+              Hongyi Yuan<sup>2</sup>,</span>
+            <span class="author-block">
+              Xiangcheng Zhang<sup>1,2</sup>,</span>
+            <span class="author-block">
+              Tianhao Huang<sup>1</sup>,</span>
+            <span class="author-block">
+              Changjing He<sup>1</sup>,</span>
+            <span class="author-block">
+              Chaoyi Deng<sup>1,2</sup>,</span>
+            <span class="author-block">
+              Renrui Zhang<sup>2</sup>,</span>
+            <span class="author-block">
+              Youbin Wu<sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="http://ise.thss.tsinghua.edu.cn/~mlong/">Mingsheng Long</a>#<sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-6 publication-authors">
+            <span class="author-block"><sup>1</sup>Tsinghua University,</span>
+            <span class="author-block"><sup>2</sup>ByteDance Seed</span>
+          </div>
+          <div class="is-size-6 publication-authors">
+            <span class="author-block"># Corresponding Author</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- icons: https://fontawesome.com/v4/icons/ -->
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a target="_blank" href="https://arxiv.org/abs/2601.xxxxx"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a target="_blank" href="https://github.com/thuml/Reasoning-Visual-World"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+
+              <!-- Hugging Face Link -->
+              <span class="link-block">
+                <a href="https://huggingface.co/datasets/thuml/VisWorld-Eval"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <img src="./static/images/hf-logo.png" alt="Hugging Face" style="height: 1.5em; width: 1.5em;">
+                  </span>
+                  <span>VisWorld-Eval</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top: 0rem">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+
+        <span class="tldr-badge">TL;DR</span>
+
+        <div class="content has-text-justified">
+          <p style="font-size: 1.25rem; text-align: center; margin-top: 0.8rem;">
+            We answer the question from a world model perspective:
+            <br/>
+            <span style="color: hsl(204, 86%, 53%); font-weight: bolder;">
+              When and how visual generation, enabled by unified multimodal models (UMMs),
+              <br/>benefits reasoning?
+            </span>
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top: 0rem">
+  <div class="container is-max-wider">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Humans construct internal models of the world and reason by manipulating the concepts within 
+            these models. Recent advances in artificial intelligence (AI), particularly chain-of-thought (CoT) 
+            reasoning, approximate such human cognitive abilities, where world models are believed to be 
+            embedded within large language models. Expert-level performance in formal and abstract domains
+             such as mathematics and programming has been achieved in current systems, which rely 
+             predominantly on verbal reasoning as their primary information-processing pathway. However, they 
+             still lag far behind humans in domains like physical and spatial intelligence, which require richer 
+             representations and prior knowledge. The emergence of unified multimodal models (UMMs) capable 
+             of both verbal and visual generation has therefore sparked interest in more human-like reasoning 
+             grounded in complementary multimodal pathways, though a clear consensus on their benefits has 
+             not yet been reached. From a world-model perspective, this paper presents the first principled study 
+             of when and how visual generation benefits reasoning. Our key position is the <b>visual superiority hypothesis</b>: 
+             for certain tasks--particularly those grounded in the physical world--visual 
+             generation more naturally serves as world models, whereas purely verbal world models encounter 
+             bottlenecks arising from representational limitations or insufficient prior knowledge. Theoretically, 
+             we formalize internal world modeling as a core component of deliberate CoT reasoning and analyze 
+             distinctions among different forms of world models from both informativeness and knowledge 
+             aspects. Empirically, we identify and design tasks that necessitate interleaved visual-verbal CoT 
+             reasoning, constructing a new evaluation suite, <b>VisWorld-Eval</b>. Through controlled 
+             experiments on a state-of-the-art UMM, we show that interleaved CoT significantly outperforms 
+             purely verbal CoT on tasks that favor visual world modeling. Conversely, it offers no clear advantage 
+             for tasks that do not require explicit visual modeling. Together, these insights and findings clarify the 
+             applicability and potential of multimodal world modeling and reasoning for more powerful, human-like 
+             multimodal AI. We publicly release our evaluation suite to facilitate further research.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-wider">
+
+    <div class="columns">
+
+      <!-- 左侧文字（40%） -->
+      <div class="column is-5">
+        <h2 class="title is-3">
+          🌏 A World Model Perspective of Multimodal Reasoning
+        </h2>
+
+        <div class="content">
+          <div class="content">
+
+            <ul>
+              <li style="margin-top: 2rem;">
+                <span style="font-weight: bolder;">World Model in Human Minds</span>: 
+                Humans construct <a href="https://en.wikipedia.org/wiki/Mental_model">mental models</a> of the world, 
+                representing information and knowledge through <a href="https://en.wikipedia.org/wiki/Dual-coding_theory">two complementary channels</a>–verbal and visual–
+                to support reasoning, planning, and decision-making.
+              </li>
+          
+              <li style="margin-top: 2rem;">
+                <span style="font-weight: bolder;">Reasoning with Verbal World Models</span>: 
+                Recent advances in large language models (LLMs) and vision language models (VLMs) largely rely on verbal chain-of-thought reasoning, leveraging primarily verbal and symbolic world knowledge.
+              </li>
+          
+              <li style="margin-top: 2rem;">
+                <span style="font-weight: bolder;">Reasoning with Visual World Models</span>: 
+                Unified multimodal models (UMMs) open a new paradigm by using visual generation for visual world modeling, advancing more human-like reasoning on tasks grounded in the physical world.
+              </li>
+            </ul>
+          
+          </div>
+        </div>
+      </div>
+
+      <!-- 右侧图片（60%） -->
+      <div class="column is-7 has-text-centered">
+        <img
+          src="static/images/concept.png"
+          class="interpolation-image"
+          width="100%"
+        />
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-wider">
+
+    <div class="columns">
+
+      <!-- 左侧文字（40%） -->
+      <div class="column is-5">
+        <h2 class="title is-3">
+          ⚙️ Visual Superiority Hypothesis
+        </h2>
+
+        <h3 class="title is-4">
+          Formulation
+        </h3>
+
+        <div class="content">
+          <div class="content">
+
+            <ul>
+              <li style="margin-top: 1rem;">
+                <span style="font-weight: bolder;">Multiple Observations of the World</span>: 
+                Observations of the same underlying world state can span multiple modalities, including verbal and visual observations.
+              </li>
+          
+              <li style="margin-top: 1rem;">
+                <span style="font-weight: bolder;">Atomic Capabilities of World Models</span>: 
+                <ul>
+                  <li><span style="color: hsl(204, 86%, 53%);">World reconstruction</span>: infers complete structure from partial observations and enables novel view synthesis,</li>
+                  <li><span style="color: hsl(204, 86%, 53%);">World simulation</span></world>: models dynamics to predict future observations.</li>
+                </li>
+                </ul>
+              </li>
+          
+              <li style="margin-top: 1rem;">
+                <span style="font-weight: bolder;">World Model-Based Chain-of-Thought Formulations</span>: 
+                CoT reasoning includes internal world modeling, by explicitly maintaining an evolving sequence of observations as evidence of reasoning.
+                <ul>
+                  <li><span style="color: hsl(204, 86%, 53%);">Reasoning with implict world modeling</span>: purely verbal CoTs, with no explicit observation is generated.</li>
+                  <li><span style="color: hsl(204, 86%, 53%);">Reasoning with visual world modeling</span>: purely verbal CoTs, with observations as verbal descriptions;</li>
+                  <li><span style="color: hsl(204, 86%, 53%);">Reasoning with verbal world modeling</span>: interleaved verbal-visual CoTs, with observations as generated images;</li>
+                </li>
+                </ul>
+              </li>
+            </ul>
+          
+          </div>
+        </div>
+
+        <h3 class="title is-4">
+          Position
+        </h3>
+
+        <div class="content">
+          <p> Based on our analysis from both <span style="color: hsl(204, 86%, 53%);">informativeness</span> and <span style="color: hsl(204, 86%, 53%);">knowledge</span> aspects: </p>
+        </div>
+
+      </div>
+
+      <!-- 右侧图片（60%） -->
+      <div class="column is-7 has-text-centered">
+        <img
+          src="static/images/formulation.png"
+          class="interpolation-image"
+          width="100%"
+        />
+      </div>
+
+    </div>
+    <div class="content hypothesis-box">
+      <p class="hypothesis-title">
+        The Visual Superiority Hypothesis
+      </p>
+    
+      <p class="hypothesis-text">
+        In multimodal reasoning tasks grounded in the physical world,
+        visual generation as a world model yields representations that are more <span style="color: hsl(204, 86%, 53%);">informative</span>
+        and <span style="color: hsl(204, 86%, 53%);">knowledge-rich</span> than those produced by verbal world models.
+      </p>
+    
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-wider">
+
+    <div class="columns">
+
+      <!-- 左侧文字（40%） -->
+      <div class="column is-5">
+        <h2 class="title is-3">
+          🏆 VisWorld-Eval: Task Suite for Reasoning with Visual World Modeling
+        </h2>
+
+        <div class="content">
+          <p>
+            While prior work has primarily designed evaluation tasks heuristically, 
+            <span style="color: hsl(204, 86%, 53%);">VisWorld-Eval</span> comprises seven tasks spanning both synthetic and real-world domains, 
+            principledly designed to isolate and demand specific atomic world-model capabilities.
+          </p>
+        </div>
+
+
+        <div class="content">
+          <div class="content">
+
+            <ul>
+              <li style="margin-top: 1rem;">
+                <span style="color: hsl(204, 86%, 53%); font-weight: bolder;">
+                  World simulation
+                </span>: 
+                Paper folding, Multi-hop manipulation, Ball tracking, Maze, and Sokoban
+              </li>
+          
+              <li style="margin-top: 1rem;">
+                <span style="color: hsl(204, 86%, 53%); font-weight: bolder;">
+                  World Reconstruction
+                </span>: 
+                Cube 3-view projection, Real-world spatial reasoning
+              </li>
+            </ul>
+          
+          </div>
+        </div>
+
+      </div>
+
+
+      <!-- 右侧图片（60%） -->
+      <div class="column is-7 has-text-centered">
+        <img
+          src="static/images/benchmark.png"
+          class="interpolation-image"
+          width="100%"
+        />
+      </div>
+
+    </div>
+
+    <h3 class="title is-4">
+      Leaderboard
+    </h3>
+
+    <p class="content has-text-centered">
+      Zero-shot evaluation of advanced VLMs on VisWorld-Eval. We report the average accuracy over five tasks (excluding Maze and Sokoban) and over all seven tasks.
+    </p>
+
+    <style>
+      .table-wrapper {
+        overflow-x: auto;
+        margin: 2rem 0;
+      }
+    
+      .web-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        font-size: 15px;
+        background: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      }
+    
+      .web-table th,
+      .web-table td {
+        padding: 12px 14px;
+        text-align: center;
+        border-bottom: 1px solid #eee;
+        white-space: nowrap;
+      }
+    
+      .web-table th {
+        background: #f7f9fc;
+        font-weight: 600;
+        color: #333;
+      }
+    
+      .web-table td:first-child,
+      .web-table th:first-child {
+        text-align: left;
+        font-weight: 500;
+      }
+
+      .web-table > thead > tr > th,
+      .web-table > tbody > tr > td {
+        text-align: center;
+      }
+
+      .web-table > thead > tr > th:first-child,
+      .web-table > tbody > tr > td:first-child {
+        text-align: left;
+      }
+    
+      /* hover */
+      .web-table tbody tr:hover {
+        background: #f5faff;
+      }
+    
+      /* group row */
+      .group-row td {
+        background: #f0f4f8;
+        font-weight: 600;
+        color: #444;
+        text-align: center !important;
+      }
+    
+      /* highlight */
+      .best {
+        color: #3273dc;
+        font-weight: 700;
+      }
+    
+      .second {
+        color: #555;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+    </style>
+    
+    
+    <div class="table-wrapper">
+    <table class="web-table">
+    
+      <thead>
+        <tr>
+          <th>Models</th>
+          <th>Paper Folding</th>
+          <th>Multi-Hop Manip.</th>
+          <th>Ball Tracking</th>
+          <th>Cube 3-View</th>
+          <th>MMSI (Pos. Rel.)</th>
+          <th>Maze</th>
+          <th>Sokoban</th>
+          <th>Overall (5 tasks)</th>
+          <th>Overall (7 tasks)</th>
+        </tr>
+      </thead>
+    
+      <tbody>
+    
+        <tr class="group-row">
+          <td colspan="10">Proprietary Models</td>
+        </tr>
+    
+        <tr>
+          <td>Gemini 3 Flash</td>
+          <td class="second">25.6</td>
+          <td class="best">75.4</td>
+          <td class="best">55.3</td>
+          <td class="second">52.7</td>
+          <td>41.3</td>
+          <td class="second">73.9</td>
+          <td class="best">99.3</td>
+          <td class="best">50.0</td>
+          <td class="best">60.5</td>
+        </tr>
+    
+        <tr>
+          <td>Gemini 3 Pro</td>
+          <td class="best">27.0</td>
+          <td>74.5</td>
+          <td class="second">44.7</td>
+          <td class="best">53.3</td>
+          <td class="best">49.6</td>
+          <td>33.5</td>
+          <td class="second">90.2</td>
+          <td>49.8</td>
+          <td class="second">53.2</td>
+        </tr>
+    
+        <tr>
+          <td>Seed 1.8</td>
+          <td>10.6</td>
+          <td class="second">75.2</td>
+          <td>24.4</td>
+          <td>42.5</td>
+          <td>38.8</td>
+          <td class="best">83.9</td>
+          <td>68.3</td>
+          <td>38.3</td>
+          <td>49.1</td>
+        </tr>
+    
+        <tr>
+          <td>GPT 5.1</td>
+          <td>6.4</td>
+          <td>73.9</td>
+          <td>34.8</td>
+          <td>44.5</td>
+          <td class="second">44.8</td>
+          <td>0.6</td>
+          <td>62.8</td>
+          <td>40.8</td>
+          <td>38.2</td>
+        </tr>
+    
+        <tr>
+          <td>o3</td>
+          <td>13.5</td>
+          <td>68.1</td>
+          <td>24.7</td>
+          <td>37.7</td>
+          <td>44.4</td>
+          <td>0.0</td>
+          <td>36.0</td>
+          <td>37.6</td>
+          <td>32.0</td>
+        </tr>
+    
+    
+        <tr class="group-row">
+          <td colspan="10">Open-Source Models</td>
+        </tr>
+    
+        <tr>
+          <td>Qwen3-VL-8B-Thinking</td>
+          <td>11.0</td>
+          <td>49.3</td>
+          <td>17.8</td>
+          <td>21.2</td>
+          <td>27.7</td>
+          <td>0.0</td>
+          <td>5.8</td>
+          <td>25.4</td>
+          <td>18.9</td>
+        </tr>
+    
+        <tr>
+          <td>BAGEL-7B-MoT</td>
+          <td>11.2</td>
+          <td>31.6</td>
+          <td>19.4</td>
+          <td>26.8</td>
+          <td>27.2</td>
+          <td>0.0</td>
+          <td>0.2</td>
+          <td>23.2</td>
+          <td>16.6</td>
+        </tr>
+    
+      </tbody>
+    
+    </table>
+    </div>
+
+  
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-wider">
+
+    <div class="columns">
+
+      <!-- 左侧文字（40%） -->
+      <div class="column is-5">
+        <h2 class="title is-3">
+          🧪 Key Findings
+        </h2>
+
+        <h3 class="title is-4">
+          Settings
+        </h3>
+
+        <div class="content">
+          <div class="content">
+
+            <ul>
+              <li style="margin-top: 1rem;">
+                <span style="font-weight: bolder;">Data construction</span>: 
+                For each task, we construct SFT data by designing different CoT patterns with  <span style="color: hsl(204, 86%, 53%);">implicit</span>, <span style="color: hsl(204, 86%, 53%);">verbal</span>, or <span style="color: hsl(204, 86%, 53%);">visual</span> world modeling, enabling controlled comparative evaluations.
+              </li>
+          
+              <li style="margin-top: 1rem;">
+                <span style="font-weight: bolder;">Post-training UMMs</span>: We perform SFT and RLVR on a state-of-the-art open-source unified multimodal model, <a href="https://bagel-ai.org/">BAGEL</a>.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 class="title is-4">
+          Results
+        </h3>
+
+        
+        <div class="content hypothesis-box">
+        
+          <ol class="finding-list">
+        
+            <li>
+              <b>Visual World Simulation Boosts Multimodal Reasoning:</b>
+              on <span class="highlight">paper folding</span>,
+              <span class="highlight">multi-hop manipulation</span>, and
+              <span class="highlight">ball tracking</span>.
+            </li>
+        
+            <li>
+              <b>Visual World Reconstruction Boosts Multimodal Reasoning:</b>
+              on <span class="highlight">cube 3-view projection</span> and
+              <span class="highlight">real-world spatial reasoning</span>.
+            </li>
+        
+            <li>
+              <b>Visual World Modeling is Unhelpful for Certain Tasks:</b>
+              on <span class="highlight">maze</span> and
+              <span class="highlight">sokoban</span>.
+              For these tasks with simple world states, verbal world modeling,
+              even implicit world modeling, is sufficient.
+            </li>
+        
+            <li>
+              <b>Do UMMs Compromise Verbal Reasoning Capabilities and Bias Comparisons?</b>
+              No. SFT performance of
+              <a href="https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct">Qwen2.5-VL</a>
+              with implicit and verbal world modeling is comparable to that of BAGEL.
+            </li>
+        
+            <li>
+              <b>RL Enhances Various CoTs, Yet Does Not Close the Gap.</b>
+            </li>
+        
+          </ol>
+        
+        </div>
+
+
+      </div>
+
+      <!-- 右侧图片（60%） -->
+      <div class="column is-7 has-text-centered">
+        <img src="static/images/sft_performance_1x8.png" class="interpolation-image" style="margin-top:5rem;" width="100%"/>
+        <p class="content has-text-centered">
+          <i>Performance of SFT-trained UMMs across seven tasks from VisWorld-Eval.</i>
+        </p>
+        <img src="static/images/rl_performance.png" class="interpolation-image" style="margin-top:20px;" width="85%"/>
+        <p class="content has-text-centered">
+          <i>Performance of RLVR-trained VLMs and UMMs across three representative tasks.</i>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-wider">
+    <div class="rows">
+      <div class="row is-full-width half-width">
+        <h2 class="title is-3 has-text-centered"><span>🌌 Showcase</span></h2>
+        <p class="content has-text-centered">
+          Showcases of interleaved verbal-visual chain-of-thought reasoning, generated by post-trained UMMs, where visual generation serves as world models.
+          <br/>
+          <code>&lt;image&gt;</code><i> denotes a placeholder indicating the position of a generated image.</i></p>
+        <div class="content has-text-centered">
+          <img src="static/images/showcase.png" class="interpolation-image" style="margin-top:20px;" width="80%"/>
+        </div>
+      </div>
+    </div>  
+  </div>
+</section>
+
+
+<section class="section" id="citation">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3  has-text-centered">Citation</h2>
+    <pre><code>@article{wu2026visual,
+    title={Visual Generation Unlocks Human-Like Reasoning through Multimodal World Models}, 
+    author={Jialong Wu and Xiaoying Zhang and Hongyi Yuan and Xiangcheng Zhang and Tianhao Huang and Changjing He and Chaoyi Deng and Renrui Zhang and Youbin Wu and Mingsheng Long},
+    journal={arXiv preprint arXiv:2601.xxxxx},
+    year={2026},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="https://github.com/thuml/RLVR-World" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            Website template borrowed from  <a
+              href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
