@@ -3,7 +3,7 @@
 [![Project Page](https://img.shields.io/badge/Project_Page-blue)](https://thuml.github.io/Reasoning-Visual-World/)
 [![Paper](https://img.shields.io/badge/arXiv-Paper-b31b1b.svg?logo=arxiv)](https://arxiv.org/abs/2601.xxxxx)
 [![GitHub Repo](https://img.shields.io/badge/GitHub-Code-black?logo=github)](https://github.com/thuml/Reasoning-Visual-World)
-[![Hugging Face](https://img.shields.io/badge/Hugging_Face-VisWorld_Eval-F8D44E.svg?logo=huggingface)]()
+[![Hugging Face](https://img.shields.io/badge/Hugging_Face-VisWorld_Eval-F8D44E.svg?logo=huggingface)](https://huggingface.co/datasets/thuml/VisWorld-Eval)
 
 This is the official code base for the paper [Visual Generation Unlocks Human-Like Reasoning through Multimodal World Models](https://arxiv.org/abs/2601.xxxxx).
 
