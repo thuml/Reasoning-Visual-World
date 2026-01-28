@@ -1,11 +1,11 @@
 # Visual Generation Unlocks Human-Like Reasoning through Multimodal World Models 🌏
 
 [![Project Page](https://img.shields.io/badge/Project_Page-blue)](https://thuml.github.io/Reasoning-Visual-World/)
-[![Paper](https://img.shields.io/badge/arXiv-Paper-b31b1b.svg?logo=arxiv)](https://arxiv.org/abs/2601.xxxxx)
+[![Paper](https://img.shields.io/badge/arXiv-Paper-b31b1b.svg?logo=arxiv)](https://arxiv.org/abs/2601.19834)
 [![GitHub Repo](https://img.shields.io/badge/GitHub-Code-black?logo=github)](https://github.com/thuml/Reasoning-Visual-World)
 [![Hugging Face](https://img.shields.io/badge/Hugging_Face-VisWorld_Eval-F8D44E.svg?logo=huggingface)](https://huggingface.co/datasets/thuml/VisWorld-Eval)
 
-This is the official code base for the paper [Visual Generation Unlocks Human-Like Reasoning through Multimodal World Models](https://arxiv.org/abs/2601.xxxxx).
+This is the official code base for the paper [Visual Generation Unlocks Human-Like Reasoning through Multimodal World Models](https://arxiv.org/abs/2601.19834).
 
 Give it a star 🌟 if you find our work useful!
 
@@ -24,7 +24,7 @@ In this work:
 - We identify and design tasks that necessitate interleaved visual-verbal CoT reasoning, constructing a new evaluation suite, *VisWorld-Eval*.
 - Through controlled experiments on BAGEL, we show that interleaved CoT significantly outperforms purely verbal CoT on tasks that favor visual world modeling, strongly supporting our insights.
 
-For more details, check our [project page](https://thuml.github.io/Reasoning-Visual-World/) or [paper](https://arxiv.org/abs/2601.xxxxx).
+For more details, check our [project page](https://thuml.github.io/Reasoning-Visual-World/) or [paper](https://arxiv.org/abs/2601.19834).
 
 ## 🏆 VisWorld-Eval: Task Suite for Reasoning with Visual World Modeling
 
@@ -82,7 +82,7 @@ If you find this project useful, please cite our paper as:
     author={Jialong Wu and Xiaoying Zhang and Hongyi Yuan and Xiangcheng Zhang and Tianhao
 Huang and Changjing He and Chaoyi Deng and Renrui Zhang and Youbin Wu and Mingsheng
 Long},
-    journal={arXiv preprint arXiv:2601.xxxxx},
+    journal={arXiv preprint arXiv:2601.19834},
     year={2026},
 }
 ```
