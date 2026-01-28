@@ -404,7 +404,16 @@
     </h3>
 
     <p class="content has-text-centered">
-      Zero-shot evaluation of advanced VLMs on VisWorld-Eval. We report the average accuracy over five tasks (excluding Maze and Sokoban) and over all seven tasks.
+      <strong style="font-size: larger;">
+        🏆 Zero-Shot Evaluation of Advanced VLMs on VisWorld-Eval
+      </strong>
+    </p>
+
+    <p class="content has-text-centered">
+      <i>
+        We report the average accuracy across five tasks (excluding Maze and Sokoban),
+        as well as across all seven tasks.
+      </i>
     </p>
 
     <style>
@@ -572,7 +581,7 @@
     
     
         <tr class="group-row">
-          <td colspan="10">Open-Source Models</td>
+          <td colspan="10">Open-Source VLMs</td>
         </tr>
     
         <tr>
@@ -589,7 +598,7 @@
         </tr>
     
         <tr>
-          <td>BAGEL-7B-MoT</td>
+          <td>BAGEL-7B<sub> (VLM only, w/o Vis. Gen.)</sub></td>
           <td>11.2</td>
           <td>31.6</td>
           <td>19.4</td>
@@ -599,6 +608,53 @@
           <td>0.2</td>
           <td>23.2</td>
           <td>16.6</td>
+        </tr>
+    
+      </tbody>
+    
+    </table>
+    </div>
+
+    <div class="table-wrapper">
+
+    <p class="content has-text-centered">
+      <strong style="font-size: larger; margin-bottom: 0.5rem;">🏆 Evaluation of Post-trained UMMs on VisWorld-Eval</strong>
+    </p>
+
+    <table class="web-table">
+    
+      <thead>
+        <tr>
+          <th>Models</th>
+          <th>Paper Folding</th>
+          <th>Multi-Hop Manip.</th>
+          <th>Ball Tracking</th>
+          <th>Cube 3-View</th>
+          <th>MMSI (Pos. Rel.)</th>
+          <th>Maze</th>
+          <th>Sokoban</th>
+          <th>Overall (5 tasks)</th>
+          <th>Overall (7 tasks)</th>
+        </tr>
+      </thead>
+    
+      <tbody>
+    
+        <tr class="group-row">
+          <td colspan="10">Task-Specific Post-trained UMMs</td>
+        </tr>
+    
+        <tr>
+          <td>BAGEL-7B-MoT<sub>Visual-WM</sub></td>
+          <td class="best">39.2</td>
+          <td class="best">66.6</td>
+          <td class="best">57.6</td>
+          <td class="best">76.8</td>
+          <td class="best">38.4</td>
+          <td class="best">70.6</td>
+          <td class="best">39.3</td>
+          <td class="best">55.7</td>
+          <td class="best">55.5</td>
         </tr>
     
       </tbody>
