@@ -49,9 +49,13 @@ from datasets import load_dataset
 ds = load_dataset("thuml/VisWorld-Eval")
 ```
 
-<!-- ### Evaluation
+### Evaluation
 
-TODO -->
+We evaluate different models through API servers. Set your API key and server address in `evaluate.py` (for the evaluated model) and `task_verifiers.py` (for the model judge), then run the evaluation script.
+
+```bash
+python eval/evaluate.py --task ballgame --model gemini3pro
+```
 
 ### Leaderboard
 
@@ -70,7 +74,7 @@ Zero-shot evaluation of advanced VLMs on VisWorld-Eval: We report the average ac
 ## 🚀 Release Progress
 
 - [x] VisWorld-Eval data
-- [ ] VisWorld-Eval evaluation scripts
+- [x] VisWorld-Eval evaluation scripts
 
 ## 📜 Citation
 
